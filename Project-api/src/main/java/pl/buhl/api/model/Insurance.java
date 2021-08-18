@@ -33,8 +33,9 @@ public class Insurance{
 
     public Insurance(){}
 
-    public Insurance(Long id, String policy_type, Long policy_sum, String name, String surname, String item) {
+    public Insurance(Long id, String policy_number, String policy_type, Long policy_sum, String name, String surname, String item) {
         this.id = id;
+        this.policy_number = policy_number;
         this.policy_type = policy_type;
         this.policy_sum = policy_sum;
         this.name = name;
@@ -48,6 +49,14 @@ public class Insurance{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPolicy_number() {
+        return policy_number;
+    }
+
+    public void setPolicy_number(String policy_number) {
+        this.policy_number = policy_number;
     }
 
     public String getPolicy_type() {
@@ -90,10 +99,11 @@ public class Insurance{
         this.item = item;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Insurance{" +
                 "id=" + id +
+                ", policy_number='" + policy_number + '\'' +
                 ", policy_type='" + policy_type + '\'' +
                 ", policy_sum=" + policy_sum +
                 ", name='" + name + '\'' +
