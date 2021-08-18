@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12" style="text-align:right">
+      <button class="btn btn-primary get" (click)="getData()">Pobierz dane z bazy danych</button>
+      <button class="btn btn-danger delete" (click)="deleteData()">Usuń dane z bazy danych</button>
+    </div>
+    <div class="col-lg-12">
+      <h1>Import danych z pliku .xlsx</h1>
+    </div>
+    <div class="col-lg-12">
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Wybierz plik</label>
+        <input class="form-control" #inputFile name="file" type="file" (change)="readFile($event)" id="formFile">
+      </div>
+    </div>
+    <div class="col-lg-12" *ngIf="message">
+      <div class="alert alert-primary alert-dismissible" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" arial-label="Zamknij" (click)="hideMessage()"></button>
+      </div>
+    </div>
+    <div class="col-lg-12" *ngIf="dataPreview.length > 0">
+      <button class="btn btn-success save" (click)="saveData()">Zapisz dane do bazy danych</button>
+      <h2>Podgląd zawartości pliku</h2>
+      <table class="table table-hover">
+        <tbody>
+          <tr *ngFor="let row of dataPreview">
+            <td *ngFor="let cell of row">
+              {{cell}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-12" *ngIf="dataDatabase.length > 0">
+      <h2>Dane pobrane z bazy danych</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Nr polisy</td>
+            <td>Typ polisy</td>
+            <td>Suma ubezpieczenia</td>
+            <td>Imię ubezpieczonego</td>
+            <td>Nazwisko ubezpieczonego</td>
+            <td>Przedmiot ubezpieczonego</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of dataDatabase">
+            <td>{{row.id}}</td>
+            <td>{{row.policy_number}}</td>
+            <td>{{row.policy_type}}</td>
+            <td>{{row.policy_sum}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.surname}}</td>
+            <td>{{row.item}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
